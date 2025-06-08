@@ -1,0 +1,89 @@
+var index = 0;
+const recipes = [
+    {
+        title: 'Spaghetti Bolognese',
+        ingredients: 'spaghetti, minced meat, tomato sauce, onion, garlic',
+        instructions: 'Boil spaghetti, Brown minced meat, Add sauce, Mix together'
+    },
+    {
+        title: 'Chicken Curry',
+        ingredients: 'chicken, curry powder, coconut milk, onion, garlic',
+        instructions: 'Brown chicken, Add onion and garlic, Stir in curry powder, Add coconut milk, Simmer'
+    }
+];
+function displayRecipes(){
+    let ingredientsArray = ingredients.value.split(",");
+    var j = 1;
+
+    let htmlIngredients = "<ul>";
+    for (const item of ingredientsArray) {
+        htmlIngredients += `
+        <tr>
+            <td> ${item}&nbsp;&nbsp;</td>
+        </tr>`
+        j++;    
+    } 
+
+    let instructionsArray = instructions.value.split(",");
+    var i = 1;
+    let htmlInstructions = `<table>
+    <tr>
+        <th> Instructions </th>
+    </tr>`;
+    for (const item of instructionsArray) {
+        htmlInstructions += `<tr>
+            <td> ${i}. ${item} </td>
+        </tr>`;
+        i++;
+    }
+    htmlInstructions += "</table>";
+    
+    document.getElementById('recipes').innerHTML = `
+    <h1> ${title.value}</h1>
+    <h4>Ingredients: </h4>
+    ${htmlIngredients}
+    ${htmlInstructions}
+    <button onclick="editRecipe()">Edit</button> 
+    <button class="delete-button" onclick="deleteRecipe(index)">Delete</button>
+    `;
+};
+
+const button = document.getElementById('add-recipe-form');
+button.addEventListener('submit', function(event) {
+    event.preventDefault();
+    addRecipe(title, ingredients, ingredients);
+});
+function addRecipe(title, ingredients, instructions){
+    var title = document.getElementById("title").value;
+    var ingredients = document.getElementById("ingredients").value;
+    var instructions = document.getElementById("instructions").value;
+    // if (title === "" || ingredients === "" || instructions === "") {
+        //     alert("Please fill in all input fields.");
+        //     return;
+    // }
+    var newRecipe = [
+        title,
+        ingredients,
+        instructions,
+    ];
+    recipes.push(newRecipe);
+    console.log(recipes);
+    index = recipes.length - 1;
+    displayRecipes();
+    
+    let currentRecipe = {
+        title: "",
+        ingredients: [],
+        instructions: []
+    };        
+}
+
+// function editRecipe(index){    
+// }
+
+function deleteRecipe(index) {
+    recipes.splice(index, 1);
+    console.log(recipes);
+    document.getElementById('recipes').innerHTML = ``;
+    //displayRecipes();
+}
