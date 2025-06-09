@@ -141,6 +141,7 @@ button:hover {
     gap: 0.8rem;
     list-style: none;
     padding: 0;
+
 }
 
 .ingredients-list li {
@@ -151,7 +152,9 @@ button:hover {
     font-size: 0.9rem;
     margin: 5px;
     border: 1px solid #e9ecef;
+
 }
+
 
 .ingredientsArray {
   display: inline-block;

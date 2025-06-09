@@ -1,4 +1,5 @@
 var index = 0;
+let currentEditIndex = null;
 const recipes = [
     {
         title: 'Spaghetti Bolognese',
@@ -52,6 +53,10 @@ const button = document.getElementById('add-recipe-form');
 button.addEventListener('submit', function(event) {
     event.preventDefault();
     addRecipe(title, ingredients, ingredients);
+    if (submit.textContent === 'Save Recipe') {
+        console.log("Inside new button");
+        deleteRecipe(index - 1);
+    }
 });
 function addRecipe(title, ingredients, instructions){
     var title = document.getElementById("title").value;
@@ -77,9 +82,13 @@ function addRecipe(title, ingredients, instructions){
         instructions: []
     };        
 }
-
-// function editRecipe(index){    
-// }
+function editRecipe(index){
+    const recipe = recipes[index];
+    var title = document.getElementById("title").value;
+    var ingredients = document.getElementById("ingredients").value;
+    var instructions = document.getElementById("instructions").value;
+    submit.textContent = 'Save Recipe';
+} 
 
 function deleteRecipe(index) {
     recipes.splice(index, 1);
