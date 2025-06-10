@@ -20,7 +20,7 @@ function displayRecipes(){
     for (const item of ingredientsArray) {
         htmlIngredients += `
         <tr>
-            <td> ${item}&nbsp;&nbsp;</td>
+            <td> <span class= "Insta">${item}</span>&nbsp;&nbsp;</td>
         </tr>`
         j++;    
     } 
@@ -29,22 +29,24 @@ function displayRecipes(){
     var i = 1;
     let htmlInstructions = `<table>
     <tr>
-        <th> Instructions </th>
+        <th><br>Instructions:</th>
     </tr>`;
     for (const item of instructionsArray) {
         htmlInstructions += `<tr>
-            <td> ${i}. ${item} </td>
+          <td>${i}. ${item}</td>
         </tr>`;
         i++;
     }
     htmlInstructions += "</table>";
     
     document.getElementById('recipes').innerHTML = `
-    <h1> ${title.value}</h1>
-    <h4>Ingredients: </h4>
+    <br><h1 style = text-align:left > ${title.value}</h1>
+    <hr><br>
+    <h4>Ingredients:</h4><br>
     ${htmlIngredients}
     ${htmlInstructions}
-    <button onclick="editRecipe()">Edit</button> 
+    <hr>
+    <br><button onclick="editRecipe()">Edit</button> 
     <button class="delete-button" onclick="deleteRecipe(index)">Delete</button>
     `;
 };
@@ -57,15 +59,16 @@ button.addEventListener('submit', function(event) {
         console.log("Inside new button");
         deleteRecipe(index - 1);
     }
+    displayRecipes();
 });
 function addRecipe(title, ingredients, instructions){
     var title = document.getElementById("title").value;
     var ingredients = document.getElementById("ingredients").value;
     var instructions = document.getElementById("instructions").value;
-    // if (title === "" || ingredients === "" || instructions === "") {
-        //     alert("Please fill in all input fields.");
-        //     return;
-    // }
+     if (title === "" || ingredients === "" || instructions === "") {
+        alert("Please fill in all input fields.");
+        return;
+    }
     var newRecipe = [
         title,
         ingredients,

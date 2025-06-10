@@ -46,9 +46,14 @@ h1 {
 }
 
 .recipes-container {
+
     height: calc(100% - 50px);
     overflow-y: auto;
-    padding-right: 1rem;
+    padding-left: 2rem;
+    background: rgb(240, 239, 239);
+}
+.delete-button{
+    background-color: red;
 }
 
 
@@ -142,7 +147,7 @@ button:hover {
     list-style: none;
     padding: 0;
 
-}
+} */
 
 .ingredients-list li {
     background: #f8f9fa;
@@ -156,7 +161,7 @@ button:hover {
 }
 
 
-.ingredientsArray {
+ .ingredientsArray {
   display: inline-block;
   background-color: #e0e0e0; 
   padding: 8px 12px;
@@ -209,6 +214,23 @@ button:hover {
 
 .btn-delete:hover {
     background-color: #c0392b;
+}
+
+.Insta{
+    padding: 5px;
+    background-color: hsl(0, 20%, 97%);
+
+    border: 1px solid #ddd;
+    border-radius: 999px;
+    font-family: sans-serif;
+    font-size: 14px;
+    color: #333;
+    cursor: default; 
+} 
+
+.Ingredients {
+    font-weight: 500;
+    color: #202124;
 }
 
 
